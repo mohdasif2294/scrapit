@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#sudo apt-get update
+sudo apt-get update
 
 #FOR INSTALLATION OF PYTHON UNCOMMENT THE FOLLOWING CODE :
 
@@ -13,7 +13,6 @@
 #./configure
 #make
 #sudo make install
-
 
 
 sudo apt-get install python-pip
