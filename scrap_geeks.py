@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import requests 
 from bs4 import BeautifulSoup
 import time
@@ -16,7 +17,7 @@ if(len(sys.argv)==1): #Checking Number of arguments
 		url="http://"+url
 
 elif(len(sys.argv)>2):
-	print "\nOnly One url is allowed at a time.........................................Try again\n"
+	print "\nOnly One url at a time.\nTry again\n"
 	exit()
 
 else:
@@ -25,26 +26,24 @@ else:
 	if("http://" not in url):
 		url="http://"+sys.argv[1]
 
-print "\nFetching the codes"
-
-for i in range(26): #Loading dots
-	sys.stdout.write("...") 
-	sys.stdout.flush() 
-	time.sleep(0.05)
-
 try:
 	response = requests.get(url,timeout=2.0) #parse the webpage
 
 except:
-	print "\n\nSession timed out: Server is not responding!\nPlease try again\n"
+	print "\nSession timed out: Server is not responding!\nIs your url correct ? Please Try again\n"
 	exit()
 
-
 if(response.status_code!=requests.codes.ok):
-	print "\n404:Error Site Not Found..\nTry again with Valid Url\n"
+	print "\nError 404: Site Not Found.\nTry again with Valid Url\n"
 	exit()
 
 else:
+	print "\nFetching the codes"
+
+	for i in range(25): #Loading dots
+		sys.stdout.write("...") 
+		sys.stdout.flush() 
+		time.sleep(0.05)
 	
 	soup = BeautifulSoup(response.text) #convert the page into well documented html page
 	soup.encode("ascii")
@@ -60,12 +59,11 @@ else:
 		lst.append(code.text)
 		count+=1
 	
-	x=min(count,3) #since only maximum of three codes are displayed!
+	x=min(count,3) #Maximum number of codes to be scrapped and displayed (max:3)
 
 	if(x==0):
 		print "\nNo code found....!\nTry again with another URL\n"
 		exit()
-
 
 	else:
 		
@@ -83,28 +81,37 @@ else:
 			fd.close()
 			
 			print "\nProgram Number:%d Obtained."%(i+1);
-			#print "\n",fil_name[i]
 			time.sleep(0.19)
 			i+=1
 
-		print "\n"
-
-		app="gedit" #application to open code
+		app="gedit" #application to open code, It can be any other editor or IDE also (codeblocks,subl,emacs)
 
 		if(x==1):
-			subprocess.check_call([app,fil_name[0]]) #executing the code in codeblocks
+			try:
+				subprocess.check_call([app,fil_name[0]]) #executing the code in application
+			except OSError as e:
+				if(e.errno==2):
+					print "\n\t%s is not installed. For installation :\n\tsudo apt-get install %s" %(app,app)
+				else:
+					print (e)
+					print "\n"
 
 		elif(x==2):
-			subprocess.check_call([app,fil_name[0],fil_name[1]])
+			try:
+				subprocess.check_call([app,fil_name[0],fil_name[1]])
+			except OSError as e:
+				if(e.errno==2):
+					print "\n\t%s is not installed. For installation :\n\tsudo apt-get install %s" %(app,app)
+				else:
+					print (e)
+					print "\n"
 
 		else:
 			try:
 				subprocess.check_call([app,fil_name[0],fil_name[1],fil_name[2]])
 			except OSError as e:
-				#if(e.errno==2):
-					#print "\n\t'Codeblocks' is not installed. For installation :\n\tsudo apt-get install codeblocks"
 				if(e.errno==2):
-					print "\n\t'gedit' is not installed. For installation :\n\tsudo apt-get install gedit"
+					print "\n\t%s is not installed. For installation :\n\tsudo apt-get install %s" %(app,app)
 				else:
 					print (e)
 					print "\n"
