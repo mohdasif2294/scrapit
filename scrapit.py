@@ -72,12 +72,17 @@ else:
 		fil_name=[]
 		
 		i=0
+		
+		directory="geeksforgeeks_codes/"
+
+		if not os.path.exists(directory):
+			os.makedirs(directory)
 
 		for code in lst:
 			if(i>=x):
 				break	
 
-			fil_name.append(titl+"%d.cpp"%(i+1)) #filename is created with cpp extension
+			fil_name.append(directory+titl+"%d.cpp"%(i+1)) #filename is created with cpp extension
 			fd=open(fil_name[i],'w')
 			fd.write(code) #writing code in the file
 			fd.close()
