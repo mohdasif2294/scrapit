@@ -2,6 +2,8 @@
 
 sudo apt-get update
 
+#FOR INSTALLATION OF PYTHON UNCOMMENT THE FOLLOWING CODE :
+
 #sudo apt-get install build-essential
 #sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
 #cd ~/Downloads/
@@ -12,11 +14,13 @@ sudo apt-get update
 #make
 #sudo make install
 
+
+
 sudo apt-get install python-pip
 pip install requests
 pip install beautifulsoup4
 
-chmod +x scrap_geeks
-cp scrap_geeks /bin/scrap_geeks
+chmod +x scrapit.py
+cp scrapit.py /bin/scrapit
 
  
