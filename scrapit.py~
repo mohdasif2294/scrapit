@@ -45,8 +45,6 @@ else:
 		sys.stdout.flush() 
 		time.sleep(0.05)
 	
-	print "\n"
-
 	soup = BeautifulSoup(response.text) #convert the page into well documented html page
 	soup.encode("ascii")
 	
@@ -72,17 +70,12 @@ else:
 		fil_name=[]
 		
 		i=0
-		
-		directory="/home/user_name/geeksforgeeks_codes/" #Directory to store your codes Change user_name tothe original user name
-
-		if not os.path.exists(directory):
-			os.makedirs(directory)
 
 		for code in lst:
 			if(i>=x):
 				break	
 
-			fil_name.append(directory+titl+"%d.cpp"%(i+1)) #filename is created with cpp extension
+			fil_name.append(titl+"%d.cpp"%(i+1)) #filename is created with cpp extension
 			fd=open(fil_name[i],'w')
 			fd.write(code) #writing code in the file
 			fd.close()
@@ -123,6 +116,5 @@ else:
 					print (e)
 					print "\n"
 				
-
 
 
