@@ -1,2 +1,2 @@
 #For not adding program files
-*.cpp
+*.cpp*
