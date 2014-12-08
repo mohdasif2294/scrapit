@@ -1,4 +1,4 @@
-Scrap_geeks
+scrapit
 ===========
 
 Get programs from geeksforgeeks website
