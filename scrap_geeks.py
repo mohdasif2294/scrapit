@@ -6,9 +6,6 @@ import sys
 import array
 import subprocess
 import os
-#from subprocess import CalledProcessError,check_output
-#from subprocess import Popen, PIPE
-import shlex
 
 	
 if(len(sys.argv)==1): #Checking Number of arguments
@@ -30,13 +27,13 @@ else:
 
 print "\nFetching the codes"
 
-for i in range(25): #Loading dots
+for i in range(26): #Loading dots
 	sys.stdout.write("...") 
 	sys.stdout.flush() 
 	time.sleep(0.05)
 
 try:
-	response = requests.get(url,timeout=1.5) #parse the webpage
+	response = requests.get(url,timeout=2.0) #parse the webpage
 
 except:
 	print "\n\nSession timed out: Server is not responding!\nPlease try again\n"
@@ -81,27 +78,18 @@ else:
 				break	
 
 			fil_name.append(titl+"%d.cpp"%(i+1)) #filename is created with cpp extension
-			#fil_name[i]=[word.replace(" ","_") for word in fil_name[i]]
 			fd=open(fil_name[i],'w')
 			fd.write(code) #writing code in the file
 			fd.close()
 			
 			print "\nProgram Number:%d Obtained."%(i+1);
-			print "\n",fil_name[i]
-			time.sleep(0.18)
+			#print "\n",fil_name[i]
+			time.sleep(0.19)
 			i+=1
 
 		print "\n"
 
 		app="gedit" #application to open code
-
-		#codes=""
-		
-		#codes=", ".join(fil_name)
-		#codes="gedit, "+codes
-		#print codes,"\n"
-		#print shlex.split(codes)
-		#print codes.split(", "),"\n"
 
 		if(x==1):
 			subprocess.check_call([app,fil_name[0]]) #executing the code in codeblocks
