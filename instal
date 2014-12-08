@@ -16,11 +16,12 @@ sudo apt-get update
 
 
 
-sudo apt-get install python-pip
-pip install requests
-pip install beautifulsoup4
+#sudo apt-get install python-pip
+#pip install requests
+#pip install beautifulsoup4
 
-chmod +x scrapit.py
-cp scrapit.py /bin/scrapit
+#chmod +x scrapit.py
+#cp scrapit.py /bin/scrapit
 
+cd Downloads
  
