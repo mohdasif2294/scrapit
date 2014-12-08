@@ -45,6 +45,8 @@ else:
 		sys.stdout.flush() 
 		time.sleep(0.05)
 	
+	print "\n"
+
 	soup = BeautifulSoup(response.text) #convert the page into well documented html page
 	soup.encode("ascii")
 	
@@ -116,5 +118,6 @@ else:
 					print (e)
 					print "\n"
 				
+
 
 
