@@ -19,6 +19,7 @@ sudo apt-get install python-pip
 pip install requests
 pip install beautifulsoup4
 
+#giving permission
 chmod +x scrapit.py
 cp scrapit.py /bin/scrapit
 
