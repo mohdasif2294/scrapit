@@ -23,4 +23,6 @@ pip install beautifulsoup4
 chmod +x scrapit.py
 cp scrapit.py /bin/scrapit
 
+
+#for errors reporting or further clarification mail me at mohdasif2294@gmail.com
  
